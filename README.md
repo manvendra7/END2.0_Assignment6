@@ -129,6 +129,9 @@ Train Loss: 1.070 | Train Acc: 68.11%
 
 # Encoder Decoder Output
 
+## Encoder Outputs
+![encode](time_step0.PNG)
+
 # Examples of correctly classified tweets
 
 Tweet - A valid explanation for why Trump won't let women on the golf course.
