@@ -13,9 +13,9 @@ This is how it will look:
 
 # Conceptual Understanding
 
-Encoder-It accepts a single element of the input sequence at each time step, process it, collects information for that element and propagates it forward.
-Intermediate vector- This is the final internal state produced from the encoder part of the model. It contains information about the entire input sequence to help the decoder make accurate predictions.
-Decoder- given the entire sentence, it predicts an output at each time step.
+- Encoder-It accepts a single element of the input sequence at each time step, process it, collects information for that element and propagates it forward.
+- Context/Intermediate vector- This is the final internal state produced from the encoder part of the model. It contains information about the entire input sequence to help the decoder make accurate predictions.
+- Decoder- given the entire sentence, it predicts an output at each time step.
 
 
 # Model Architechture
