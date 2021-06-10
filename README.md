@@ -13,11 +13,75 @@ This is how it will look:
 
 # Conceptual Understanding
 
+Encoder-It accepts a single element of the input sequence at each time step, process it, collects information for that element and propagates it forward.
+Intermediate vector- This is the final internal state produced from the encoder part of the model. It contains information about the entire input sequence to help the decoder make accurate predictions.
+Decoder- given the entire sentence, it predicts an output at each time step.
+
+
 # Model Architechture
 
 - Encoder
 
+class Encoder(nn.Module):
+  def __init__(self, vocab_size, embedding_dim, hidden_dim):
+    super().__init__()          
+    
+    # Embedding layer
+    self.embedding = nn.Embedding(vocab_size, embedding_dim)
+    
+    # LSTM layer
+    self.rnn = nn.LSTM(embedding_dim, 
+                       hidden_dim,
+                       #dropout=dropout,
+                       batch_first=True)
+
+
+  def forward(self, text, text_lengths,debug=False):
+    
+    # text = [batch size, sent_length]
+    embedded = self.embedding(text)
+    # embedded = [batch size, sent_len, emb dim]
+  
+    # packed sequence
+    packed_embedded = nn.utils.rnn.pack_padded_sequence(embedded, text_lengths.cpu(), batch_first=True)
+    
+    packed_output, (hidden_encoder, cell_encoder) = self.rnn(packed_embedded)
+
+    encoder_output, encoder_output_lengths = nn.utils.rnn.pad_packed_sequence(packed_output, batch_first=True)
+    
+    if debug:
+      print(encoder_output)
+
+    return encoder_output
+
 - Decoder
+
+class Decoder(nn.Module):
+
+#Define all the layers used in model
+  def __init__(self, vocab_size, encoder_output_dim, hidden_dim):
+    
+    super().__init__()          
+    
+    # LSTM layer
+    self.rnn = nn.LSTM(encoder_output_dim, 
+                       hidden_dim, 
+                       batch_first=True)
+
+    self.fc = nn.Linear(hidden_dim, output_dim)
+
+
+  def forward(self, encoder_output,debug=False):
+    
+    output, (hidden_decoder, cell_decoder) = self.rnn(encoder_output)
+
+    # Linear
+    dense_outputs = self.fc(hidden_decoder)   
+    
+    if debug:
+      print(dense_outputs)
+
+    return dense_outputs
 
 # Define hyperparameters
 - vocab_len = len(Tweet.vocab)
@@ -65,6 +129,9 @@ Train Loss: 1.070 | Train Acc: 68.11%
 # Encoder Decoder Output
 
 # Examples of correctly classified tweets
+
+Tweet - A valid explanation for why Trump won't let women on the golf course.
+Sentiment - Negative
 
 # Examples of misclassified tweets
 
