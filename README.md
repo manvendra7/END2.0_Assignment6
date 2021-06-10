@@ -165,3 +165,14 @@ Sentiment - Negative
 
 # Examples of misclassified tweets
 
+![missclassified](missclass_tweet.PNG)
+
+# Training Validation loss
+
+![loss](train_valid_loss.png)
+
+# Training Validation accuracy
+
+![loss](train_valid_acc.png)
+
+Thank You 😁
