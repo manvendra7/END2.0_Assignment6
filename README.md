@@ -130,6 +130,7 @@ Train Loss: 1.070 | Train Acc: 68.11%
 # Encoder Decoder Output
 
 ## Encoder Outputs
+
 ![encode](time_step0.PNG)
 ![encode](time_step1.PNG)
 ![encode](time_step2.PNG)
@@ -145,6 +146,17 @@ Train Loss: 1.070 | Train Acc: 68.11%
 ![encode](time_step12.PNG)
 ![encode](time_step13.PNG)
 ![encode](time_step14.PNG)
+
+## Decoder Output
+
+![decode](decod_0_1.PNG)
+![decode](decod_2_3.PNG)
+![decode](decod_4_5.PNG)
+![decode](decod_6_7.PNG)
+![decode](decod_8_9.PNG)
+![decode](decod_10_11.PNG)
+![decode](decod_12_13.PNG)
+![decode](decod_14.PNG)
 
 # Examples of correctly classified tweets
 
