@@ -19,6 +19,7 @@ This is how it will look:
 
 
 # Model Architechture
+![Model_Architecture](Model_Architecture.png)
 
 - Encoder
 
